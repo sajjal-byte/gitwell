@@ -10,18 +10,102 @@ st.set_page_config(page_title="GitWell", layout="wide")
 CSS = """
 <style>
 #MainMenu, footer {visibility: hidden;}
-.block-container {padding-top: 2.2rem; max-width: 1180px;}
-h1 {font-weight: 650; letter-spacing: -0.02em;}
-h3 {letter-spacing: -0.01em;}
-[data-testid="stForm"] {border: none; padding: 0;}
+.stApp {
+    background: radial-gradient(circle at top left, rgba(122,162,255,0.12), transparent 26%),
+                radial-gradient(circle at right top, rgba(71,214,170,0.10), transparent 20%),
+                linear-gradient(180deg, rgba(13,17,23,1) 0%, rgba(10,14,20,1) 100%);
+}
+.block-container {
+    padding-top: 1.6rem;
+    max-width: 1280px;
+    padding-bottom: 3rem;
+}
+h1 {
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.25rem;
+}
+h3 {
+    letter-spacing: -0.01em;
+}
+[data-testid="stForm"] {
+    border: 1px solid rgba(48, 54, 61, 0.9);
+    background: rgba(22,27,34,0.75);
+    border-radius: 18px;
+    padding: 0.9rem 1rem 0.25rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
 [data-testid="stMetric"] {
-    background: #161b22; border: 1px solid #30363d;
-    border-radius: 10px; padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(22,27,34,0.96), rgba(17,24,39,0.98));
+    border: 1px solid rgba(48,54,61,0.95);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
 }
 [data-testid="stMetricLabel"] {color: #8b949e;}
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, rgba(13,17,23,0.94), rgba(11,15,22,0.98));
+    border-right: 1px solid rgba(48,54,61,0.75);
+}
+[data-testid="stSidebarNav"] {padding-top: 0.8rem;}
+.stTextInput > div > div > input,
+.stSelectbox > div > div,
+.stTextArea > div > div {
+    background: rgba(13,17,23,0.85);
+    border-radius: 10px;
+    border: 1px solid rgba(110,118,129,0.45);
+}
+.stButton > button {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.55rem 1rem;
+    background: linear-gradient(180deg, #2f81f7, #1f6feb);
+    border: 1px solid rgba(88,166,255,0.85);
+    box-shadow: 0 8px 18px rgba(31,111,235,0.25);
+}
+.stButton > button:hover {
+    background: linear-gradient(180deg, #3b8ef7, #2b74ea);
+    border-color: rgba(102,180,255,0.95);
+}
+.gw-banner {
+    background: linear-gradient(135deg, rgba(31,111,235,0.20), rgba(154,92,255,0.12), rgba(19,50,87,0.18));
+    border: 1px solid rgba(110,118,129,0.45);
+    border-radius: 22px;
+    padding: 1.1rem 1.2rem 1.3rem;
+    margin-bottom: 1.1rem;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 18px 48px rgba(31,111,235,0.08);
+}
+.gw-badge {
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    background: rgba(122,162,255,0.18);
+    color: #b9d1ff;
+    border: 1px solid rgba(122,162,255,0.35);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.gw-banner-title {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 1.08;
+    margin-top: 0.55rem;
+}
+.gw-banner-subtitle {
+    color: rgba(230,237,243,0.8);
+    font-size: 1rem;
+    margin-top: 0.3rem;
+}
 .gw-card {
-    background: #161b22; border: 1px solid #30363d; border-radius: 10px;
-    padding: 12px 16px; margin-bottom: 10px;
+    background: rgba(22,27,34,0.9);
+    border: 1px solid rgba(48,54,61,0.95);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 .gw-muted {color: #8b949e; font-size: 0.88rem; margin-top: 2px;}
 .gw-pill {
@@ -30,14 +114,84 @@ h3 {letter-spacing: -0.01em;}
     border: 1px solid #30363d;
 }
 .gw-bad {color: #f0883e; border-color: #7d4a1f; background: rgba(240,136,62,.10);}
-.stTabs [data-baseweb="tab-list"] {gap: 4px;}
+.gw-hero {
+    background: linear-gradient(180deg, rgba(17,24,39,0.96), rgba(13,17,23,0.94));
+    border: 1px solid rgba(48,54,61,0.9);
+    border-radius: 18px;
+    padding: 1rem 1.1rem 0.8rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+}
+.gw-hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.4rem;
+}
+.gw-hero-title {
+    font-weight: 800;
+    font-size: clamp(1.35rem, 2vw, 2rem);
+    letter-spacing: -0.05em;
+    margin: 0.2rem 0 0.25rem;
+}
+.gw-hero-sub {
+    color: rgba(230,237,243,0.8);
+    margin-bottom: 0.9rem;
+}
+.gw-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+}
+.gw-stat {
+    background: rgba(31,36,45,0.8);
+    border: 1px solid rgba(48,54,61,0.9);
+    border-radius: 12px;
+    padding: 0.7rem 0.8rem;
+}
+.gw-stat-label {
+    display: block;
+    color: #8b949e;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.25rem;
+}
+.gw-stat strong {
+    font-size: 1rem;
+    font-weight: 700;
+}
+.stTabs [data-baseweb="tab-list"] {gap: 8px;} 
+.stTabs [data-baseweb="tab"] {
+    border-radius: 10px 10px 0 0;
+    height: 42px;
+    padding: 0 12px;
+}
+.stTabs [data-baseweb="tab-highlight"] {
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(31,111,235,0.2);
+}
+.stProgress > div > div {
+    background: linear-gradient(90deg, #79c0ff, #58a6ff 50%, #7ee787);
+}
+div[data-testid="stCodeBlock"] {
+    border-radius: 12px;
+    border: 1px solid rgba(48,54,61,0.9);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
 
-st.title("GitWell")
-st.caption("Understand any GitHub repo and generate the docs it is missing. "
-           "Built for first-time contributors. Runs on open-weight Gemma (local) or Gemini.")
+st.markdown("""
+<div class="gw-banner">
+  <div class="gw-badge">GitHub repo intelligence</div>
+  <div class="gw-banner-title">GitWell</div>
+  <div class="gw-banner-subtitle">Understand any GitHub repo and generate the docs it is missing — built for first-time contributors.</div>
+</div>
+""", unsafe_allow_html=True)
 
 with st.sidebar:
     st.header("AI engine")
@@ -90,13 +244,28 @@ def make_doc(name):
 
 
 # ---- header ---------------------------------------------------------------
-st.markdown(f"### [{info['full_name']}]({info['url']})")
-if info["description"]:
-    st.caption(info["description"])
+status_text = gw.verdict(score)
+st.markdown(f"""
+<div class="gw-hero">
+  <div class="gw-hero-top">
+    <span class="gw-badge">Repository overview</span>
+    <span class="gw-pill {'gw-bad' if score < 60 else ''}">{status_text}</span>
+  </div>
+  <div class="gw-hero-title"><a href="{info['url']}" style="color: inherit; text-decoration: none;">{info['full_name']}</a></div>
+  <div class="gw-hero-sub">{info['description'] or 'No description provided for this repository.'}</div>
+  <div class="gw-meta-grid">
+    <div class="gw-stat"><span class="gw-stat-label">Health score</span><strong>{score}/100</strong></div>
+    <div class="gw-stat"><span class="gw-stat-label">Main language</span><strong>{info['languages'][0] if info['languages'] else 'n/a'}</strong></div>
+    <div class="gw-stat"><span class="gw-stat-label">Stars</span><strong>{info['stars']:,}</strong></div>
+    <div class="gw-stat"><span class="gw-stat-label">Forks</span><strong>{info['forks']:,}</strong></div>
+    <div class="gw-stat"><span class="gw-stat-label">Last push</span><strong>{'n/a' if days is None else f'{days}d ago'}</strong></div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
 m = st.columns(5)
 m[0].metric("Health score", f"{score}/100")
-m[1].metric("Status", gw.verdict(score))
+m[1].metric("Status", status_text)
 m[2].metric("Main language", info["languages"][0] if info["languages"] else "n/a")
 m[3].metric("Stars", f"{info['stars']:,}")
 m[4].metric("Last push", "n/a" if days is None else f"{days}d ago")
